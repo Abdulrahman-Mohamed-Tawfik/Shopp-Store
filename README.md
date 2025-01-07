@@ -72,6 +72,25 @@ Shopp is a modern, sleek, and user-friendly e-commerce platform dedicated to sel
 
 ---
 
+## Used Technologies
+
+- **Frontend**:
+  - Angular: For building the user interface.
+  - HTML5, CSS3, and Bootstrap: For responsive and modern design.
+
+- **Backend**:
+  - ASP.NET Core: For creating a robust API.
+  - Node.js: For running backend services.
+
+- **Database**:
+  - MongoDB: For data storage and management.
+
+- **Tools**:
+  - Git: For version control.
+  - Visual Studio Code: For development.
+
+---
+
 ## Installation Steps
 
 ### Prerequisites
@@ -120,6 +139,8 @@ Shopp is a modern, sleek, and user-friendly e-commerce platform dedicated to sel
    cd ../UI
    ng serve -o
    ```
+
+---
 
 ## Contributing
 
