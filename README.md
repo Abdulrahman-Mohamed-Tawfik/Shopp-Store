@@ -71,21 +71,21 @@ Shopp is a modern, sleek, and user-friendly e-commerce platform dedicated to sel
    ```
 
 2. **Install Backend Dependencies**:
-   Navigate to the backend folder and install dependencies:
+   Navigate to the API folder and install dependencies:
    ```bash
-   cd backend
+   cd API
    npm install
    ```
 
 3. **Install Frontend Dependencies**:
-   Navigate to the frontend folder and install dependencies:
+   Navigate to the UI folder and install dependencies:
    ```bash
-   cd ../frontend
+   cd ../UI
    npm install
    ```
 
 4. **Environment Configuration**:
-   Create a `.env` file in the backend folder and add the following:
+   Create a `.env` file in the API folder and add the following:
    ```env
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_secret_key
@@ -95,14 +95,14 @@ Shopp is a modern, sleek, and user-friendly e-commerce platform dedicated to sel
 5. **Run the Backend Server**:
    Start the backend server:
    ```bash
-   cd ../backend
+   cd ../API
    npm start
    ```
 
 6. **Run the Frontend Application**:
    Start the frontend application:
    ```bash
-   cd ../frontend
+   cd ../UI
    npm start
    ```
 
@@ -113,4 +113,3 @@ Shopp is a modern, sleek, and user-friendly e-commerce platform dedicated to sel
 
 ## Contributing
 Contributions are welcome! Feel free to fork the repository and submit pull requests.
-
