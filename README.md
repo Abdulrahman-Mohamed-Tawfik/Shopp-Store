@@ -79,8 +79,8 @@ Shopp is a modern, sleek, and user-friendly e-commerce platform dedicated to sel
   - HTML5, CSS3, and Bootstrap: For responsive and modern design.
 
 - **Backend**:
-  - ASP.NET Core: For creating a robust API.
   - Node.js: For running backend services.
+  - Express.js: For building the API.
 
 - **Database**:
   - MongoDB: For data storage and management.
