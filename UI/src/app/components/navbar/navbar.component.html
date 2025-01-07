@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/home">Shopp</a>
+        <!-- <img class="shoppicon" src="shoppicon.ico" alt=""> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" routerLink="/categories"
+                        routerLinkActive="active">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active"
+                        *ngIf="isLoggedIn && isAdmin">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a></li>
+                <!-- Dropdown Menu Example -->
+                <li class="nav-item dropdown dropdown-hover">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false">
+                        More
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" [routerLink]="['/cart/user', user.userId]"
+                                *ngIf="isLoggedIn && !isAdmin">Cart</a></li>
+                        <li><a class="dropdown-item" routerLink="/login" *ngIf="!isLoggedIn">Login</a></li>
+                        <li><a class="dropdown-item" routerLink="/signup" *ngIf="!isLoggedIn">Sign Up</a></li>
+                        <li><a class="dropdown-item" routerLink="/login" (click)="logout()"
+                                *ngIf="isLoggedIn">Logout</a></li>
+                        <li><a class="dropdown-item" routerLink="/help">Help</a></li>
+                    </ul>
+                </li>
+                <!-- Circle Image -->
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <img src="assets/imgs/user.jpg" alt="User Profile" class="nav-profile-img" routerLink="/profile">
+                    <div class="nav-username"> {{user.username}}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

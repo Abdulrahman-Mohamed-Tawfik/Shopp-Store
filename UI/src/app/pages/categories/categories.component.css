@@ -1,0 +1,73 @@
+/* Categories Page Specific Styles */
+
+/* Category Cards */
+.category-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff; /* White background for the card */
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Category Image */
+.category-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 5px solid var(--primary-color);  /* Primary color border */
+}
+
+/* Category Card Body */
+.category-card .card-body {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--primary-color);  /* Gradient overlay with primary color */
+    color: #fff;
+    padding: 30px;
+    border-radius: 0 0 15px 15px;
+}
+
+/* Category Title */
+.category-card .card-body h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Category Description */
+.category-card .card-body p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);  /* Slightly lighter white text */
+}
+
+/* Category Button */
+.category-card .btn {
+    background-color: var(--accent-color);  /* Vibrant Orange for the button */
+    color: white;
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.category-card .btn:hover {
+    background-color: transparent;
+    border-color: var(--accent-color);
+    color: var(--accent-color);  /* Hover effect changes color to match accent color */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-card .card-body {
+        padding: 20px;
+    }
+
+    .category-card img {
+        height: 200px;
+    }
+}

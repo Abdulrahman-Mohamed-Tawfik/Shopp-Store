@@ -1,0 +1,22 @@
+<div class="product-details">
+    <h1>Product Details</h1>
+
+    <div class="details-card">
+        <!-- Assuming product.images is a string, if it's an array, show the first image -->
+        <img [src]="staticURL+product.imageURL" alt="{{ product.name }}" class="product-image" />
+
+        <div class="details-content">
+            <h2>{{ product.name }}</h2>
+            <p class="description">{{ product.description }}</p>
+
+            <p><strong>Category:</strong> {{ product.category.name }}</p>
+            <p><strong>Price:</strong> ${{ product.price }}</p>
+            <p><strong>Sizes:</strong> {{ product.sizes?.join(', ') }}</p>
+            <p><strong>Colors:</strong> {{ product.colors?.join(', ') }}</p>
+            <p><strong>Stock:</strong> {{ product.stock }}</p>
+            <p><strong>Featured:</strong> {{ product.isFeatured ? 'Yes' : 'No' }}</p>
+
+            <button routerLink="/products" class="back-button">Back to Products</button>
+        </div>
+    </div>
+</div>

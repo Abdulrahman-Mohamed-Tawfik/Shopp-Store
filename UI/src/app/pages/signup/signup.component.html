@@ -1,0 +1,68 @@
+<div class="signup-body">
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form (ngSubmit)="signup()" [formGroup]="signupForm">
+            <!-- Full Name -->
+            <input type="text" formControlName="name" placeholder="Full Name">
+            <span *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">Name is
+                required</span>
+
+            <!-- Email -->
+            <input type="email" formControlName="email" placeholder="Enter your email">
+            <span *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                <span *ngIf="signupForm.get('email')?.errors?.['required']">Email is required</span>
+                <span *ngIf="signupForm.get('email')?.errors?.['email']">Email is not valid</span>
+            </span>
+
+            <!-- Password -->
+            <input type="password" formControlName="password" placeholder="Create a password">
+            <span *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+                <span *ngIf="signupForm.get('password')!.errors?.['required']">Password is required</span>
+                <span *ngIf="signupForm.get('password')?.hasError('passwordStrength')">Password must be at least 6
+                    characters long and include an uppercase letter, a lowercase letter, and a number.</span>
+            </span>
+
+            <!-- Confirm Password -->
+            <input type="password" formControlName="retypepassword" placeholder="Confirm your password">
+            <span *ngIf="signupForm.hasError('passwordMatchError') && signupForm.touched">
+                Passwords do not match
+            </span>
+            <span
+                *ngIf="signupForm.get('retypepassword')?.hasError('required') && signupForm.get('retypepassword')?.touched">
+                Retype your password
+            </span>
+
+            <!-- Address -->
+            <input type="text" formControlName="address" placeholder="Enter your Address">
+            <span *ngIf="signupForm.get('address')?.hasError('required') && signupForm.get('address')?.touched">Address
+                is
+                required</span>
+
+            <!-- Phone Number -->
+            <input type="tel" formControlName="phone" placeholder="Phone Number">
+            <span *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.invalid">
+                <span *ngIf="signupForm.get('phone')?.hasError('required')">Phone number is required</span>
+                <span *ngIf="signupForm.get('phone')?.hasError('pattern')">Phone number must be exactly 11 digits</span>
+            </span>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <select formControlName="gender" id="gender" class="form-select">
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <span *ngIf="signupForm.get('gender')!.invalid && signupForm.get('gender')!.touched">Gender is required
+                </span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Sign Up</button>
+        </form>
+
+
+        <div class="form-footer">
+            <small>Already have an account? <a routerLink="/login">Login</a></small>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="manage-usertypes-body">
+    <div class="manage-usertypes-page">
+        <header class="page-header">
+            <h1>Manage User Types</h1>
+            <a routerLink="/admin/dashboard" class="back-to-dashboard">Back to Dashboard</a>
+        </header>
+        <div class="usertype-controls">
+            <a routerLink="/admin/add-usertype" id="addUserTypeButton">Add User Type</a>
+        </div>
+        <div class="usertype-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usertypeList">
+                    <tr *ngFor="let userType of userTypes">
+                        <td>{{userType._id}}</td>
+                        <td>{{userType.typeName}}</td>
+                        <td>{{userType.description}}</td>
+                        <td class="action-buttons">
+                            <button class="bi bi-pen edit" (click)="edit(userType)" title="Edit">
+                                <i class="material-icons">Edit</i>
+                            </button>
+                            <button class="bi bi-trash delete" (click)="deleteUserType(userType._id)" title="Delete">
+                                <i class="material-icons">Delete</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Confirmation Message Modal -->
+    <app-confirmation-modal (onConfirmDeletion)="deleteUserTypeWithConfirmation()"
+        (onCancelDeletion)="cancelDeletion()"></app-confirmation-modal>
+
+    <!-- Add/Edit User Type Modal -->
+    <!-- <div id="usertypeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add User Type</h2>
+            <form id="usertypeForm">
+                <label for="typeName">Type Name:</label>
+                <input type="text" id="typeName" required>
+                <button type="submit" id="saveUserTypeButton">Save</button>
+            </form>
+        </div>
+    </div> -->
+</div>

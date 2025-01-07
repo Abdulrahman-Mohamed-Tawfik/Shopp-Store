@@ -1,0 +1,77 @@
+<div class="add-product-page">
+    <header class="add-product-header">
+      <h1>Add Product</h1>
+      <a routerLink="/admin/dashboard" class="back-to-dashboard">Back to Dashboard</a>
+      <a routerLink="/admin/manage-products" class="back-to-dashboard">Manage Products</a>
+    </header>
+    <main>
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="product-form">
+        
+        <!-- Product Name -->
+        <div class="form-group">
+          <label for="productName">Product Name:</label>
+          <input type="text" id="productName" formControlName="name" placeholder="Enter product name" required>
+        </div>
+  
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" formControlName="description" rows="4" placeholder="Enter product description" required></textarea>
+        </div>
+  
+        <!-- Category -->
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select id="category" formControlName="category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option *ngFor="let category of categories" [value]="category.name">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+  
+        <!-- Price -->
+        <div class="form-group">
+          <label for="price">Price ($):</label>
+          <input type="number" id="price" formControlName="price" step="0.01" placeholder="Enter price" required>
+        </div>
+  
+        <!-- Sizes -->
+        <div class="form-group">
+          <label for="sizes">Sizes (comma-separated):</label>
+          <input type="text" id="sizes" formControlName="sizes" placeholder="e.g., S, M, L, XL">
+        </div>
+  
+        <!-- Colors -->
+        <div class="form-group">
+          <label for="colors">Colors (comma-separated):</label>
+          <input type="text" id="colors" formControlName="colors" placeholder="e.g., Red, Blue">
+        </div>
+  
+        <!-- Product Image -->
+        <div class="form-group">
+          <label for="categoryImage">Product Image:</label>
+          <input type="file" id="categoryImage" (change)="onFileSelected($event)" required>
+        </div>
+  
+        <!-- Stock -->
+        <div class="form-group">
+          <label for="stock">Stock:</label>
+          <input type="number" id="stock" formControlName="stock" placeholder="Enter stock quantity" required>
+        </div>
+  
+        <!-- Featured -->
+        <div class="form-group checkbox-group">
+          <label for="isFeatured">
+            <input type="checkbox" id="isFeatured" formControlName="isFeatured">
+            Mark as Featured
+          </label>
+        </div>
+  
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="submit" class="btn-submit" [disabled]="productForm.invalid">Add Product</button>
+        </div>
+      </form>
+    </main>
+</div>

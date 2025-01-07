@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+
+<div class="filter-section mb-4">
+    <input type="text" id="searchInput" placeholder="Search by name..." class="form-control mb-3"
+        [(ngModel)]="searchQuery">
+    <div class="d-flex justify-content-between align-items-end flex-wrap">
+        <div class="col-12 col-md">
+            <label for="minPrice">Min Price</label>
+            <input type="number" id="minPrice" class="form-control" placeholder="0" [(ngModel)]="minPrice">
+        </div>
+        <div class="col-12 col-md">
+            <label for="maxPrice">Max Price</label>
+            <input type="number" id="maxPrice" class="form-control" placeholder="1000" [(ngModel)]="maxPrice">
+        </div>
+        <div class="col-12 col-md">
+            <label for="category">Category</label>
+            <select id="category" class="form-select" [(ngModel)]="selectedCategory">
+                <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+                <option value="allCategories">All Categories</option>
+            </select>
+        </div>
+        <div class="col-12 col-md">
+            <label for="sortOptions">Sort By</label>
+            <select id="sortOptions" class="form-select" [(ngModel)]="selectedSortOption">
+                <option value="priceAsc">Price: Low to High</option>
+                <option value="priceDesc">Price: High to Low</option>
+                <option value="nameAsc">Name: A to Z</option>
+                <option value="nameDesc">Name: Z to A</option>
+            </select>
+        </div>
+        <div class="col-12 text-center mt-3">
+            <button class="btn btn-primary applyButton" id="applyFilters" (click)="applyFilters(selectedCategory)">Apply
+                Filters</button>
+            <button class="btn btn-secondary mt-2 resetButton" id="resetFilters" (click)="resetFilters()">Reset
+                Filters</button>
+        </div>
+    </div>
+</div>
+
+<div class="product-section" id="productSection">
+    <!-- Show no products message if filtered products are empty -->
+    <div *ngIf="filteredProducts.length === 0" class="text-center mt-4">
+        <p>No products found matching your filters.</p>
+    </div>
+
+    <!-- Show product cards if filteredProducts is not empty -->
+    <div *ngFor="let product of filteredProducts" class="product-card">
+        <img [src]="staticURL + product.imageURL" alt="Product Image">
+        <h4>{{ product.name }}</h4>
+        <p class="price">${{ product.price }}</p>
+        <div class="button-group">
+            <a [routerLink]="['/details', product._id]" class="details-btn">Details</a>
+            <button *ngIf="!isAdmin" (click)="addToCart(product._id)">Add to Cart</button>
+        </div>
+        <span *ngIf="addedProducts[product._id]" [ngClass]="{'added-to-cart': addedProducts[product._id]}">
+            Added To Cart
+        </span>
+    </div>
+</div>
+<!-- Pagination controls -->
+<!-- <div *ngIf="filteredProducts.length > 0" class="pagination-container">
+    <button (click)="changePage('previous')" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="changePage('next')" [disabled]="currentPage === totalPages">Next</button>
+</div> -->
+
+
+<app-footer></app-footer>

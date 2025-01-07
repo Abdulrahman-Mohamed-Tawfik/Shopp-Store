@@ -1,0 +1,319 @@
+/* Global Styles */
+
+/* Color Variables */
+:root {
+    --primary-color: #D4AF37;
+    /* Gold - Luxury and elegance */
+    --secondary-color: #343A40;
+    /* Charcoal Gray - Modern and chic */
+    --accent-color: #E63946;
+    /* Ruby Red - Bold and captivating */
+    --background-color: #F8F9FA;
+    /* Soft White - Clean and neutral */
+    --text-color: #212529;
+    /* Dark Gray - Readability and balance */
+    --hover-color: #C69431;
+    /* Muted Gold - Subtle hover effect */
+    --hover-bg-color: #444A4F;
+    /* Lighter Charcoal - Contrasting hover background */
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Link Styling */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+/* Global Button Styles */
+button {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+button.primary:hover {
+    background-color: var(--hover-bg-color);
+}
+
+button.secondary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+button.secondary:hover {
+    background-color: var(--hover-color);
+}
+
+/* Image Resizing for Slide Show*/
+.resized-image {
+    width: 15%;
+    height: 15%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Card Layout */
+.card {
+    background-color: var(--background-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Container Layout */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Form Styling */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-container input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.4);
+    outline: none;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.form-container button:hover {
+    background-color: var(--hover-bg-color);
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Product Page Specific Styles */
+
+/* Product Section Layout */
+.product-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Product Card Style */
+.product-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Image */
+.product-card img {
+    width: 100%;
+    /* Ensures the image fills the width of the container */
+    height: 60%;
+    /* Fixed height for uniform sizing */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+    /* Crops and scales the image to fit */
+    margin-bottom: 15px;
+}
+
+.product-card:hover img {
+    transform: scale(1.1);
+    /* Image zoom effect */
+}
+
+
+/* Product Title */
+.product-card h4 {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin: 10px 0;
+    font-weight: bold;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.product-card h4:hover {
+    color: var(--secondary-color);
+}
+
+/* Product Price */
+.product-card .price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Sale Badge */
+.product-card .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .badge {
+    opacity: 1;
+}
+
+/* Button Group */
+.product-card .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Details Button */
+.product-card .details-btn {
+    background-color: #2F5C8F;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.product-card .details-btn:hover {
+    background-color: #14365D;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Add to Cart Button */
+.product-card button {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.product-card button:hover {
+    background: linear-gradient(135deg, #c94e28, var(--primary-color));
+    transform: translateY(-3px);
+}
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    .product-section {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .product-card .details-btn,
+    .product-card button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

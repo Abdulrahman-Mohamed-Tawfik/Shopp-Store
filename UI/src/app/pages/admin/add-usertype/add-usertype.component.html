@@ -1,0 +1,28 @@
+<div class="add-userType-page">
+    <header class="add-userType-header">
+      <h1>Add userType</h1>
+      <a routerLink="/admin/dashboard" class="back-to-dashboard">Back to Dashboard</a>
+      <a [routerLink]="['/admin/manage-usertypes']" class="back-to-dashboard">Manage userTypes</a>
+    </header>
+    <main>
+      <form [formGroup]="userTypeForm" (ngSubmit)="adduserType()" class="userType-form">
+        
+        <!-- userType Name -->
+        <div class="form-group">
+          <label for="userTypeName">User Type Name:</label>
+          <input type="text" id="userTypeName" formControlName="typeName" placeholder="Enter User Type Name" required>
+        </div>
+
+        <!-- description -->
+        <div class="form-group">
+          <label for="userTypedescription">Description:</label>
+          <input type="text" id="userTypedescription" formControlName="description" placeholder="Enter User Type Description" required>
+        </div>
+  
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="submit" class="btn-submit" [disabled]="userTypeForm.invalid">Add userType</button>
+        </div>
+      </form>
+    </main>
+</div>

@@ -1,0 +1,97 @@
+/* Enhanced Filter Section */
+.filter-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+}
+
+.filter-section a{
+    cursor: pointer;
+}
+
+.filter-section input,
+.filter-section select,
+.filter-section button {
+    margin: 10px 5px;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.filter-section input:focus,
+.filter-section select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+}
+
+.filter-section label {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.filter-section select {
+    background-color: white;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.filter-section button {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.filter-section #applyFilters:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.filter-section #resetFilters:hover {
+    background: linear-gradient(135deg, var(--primary-color),var(--secondary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Layout */
+.filter-section .d-flex > div {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.filter-section .d-flex > div:last-child {
+    margin-right: 0;
+}
+
+@media (max-width: 768px) {
+    .filter-section {
+        text-align: center;
+    }
+    .filter-section .d-flex {
+        flex-direction: column;
+    }
+    .filter-section .d-flex > div {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+/* Style the span when it appears */
+.product-card span {
+    display: block;
+    color: black;
+    margin: 3px;
+  }
+  
+  

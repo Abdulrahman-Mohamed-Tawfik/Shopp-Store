@@ -1,0 +1,101 @@
+/* Navbar Styling */
+.navbar {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.navbar a,img {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.navbar-brand:hover {
+    color: var(--accent-color);
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    color: white;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color);
+    background-color: rgba(216, 92, 39, 0.1);
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--accent-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.shoppicon {
+    max-width: 8%;
+}
+
+
+.nav-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    transition: all 0.3s;
+    margin-left: 10px;
+}
+
+.nav-profile-img:hover {
+    border-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.nav-item.text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.nav-username {
+    font-size: 0.9rem;
+    color: white;
+    margin-top: 5px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+/* Dropdown Hover Styles */
+.dropdown-hover .dropdown-menu {
+    display: none; /* Hide the dropdown by default */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: absolute; /* Ensures it appears over other content */
+    top: 100%; /* Aligns directly below the parent */
+    left: 0;
+    z-index: 1000;
+}
+
+/* Show dropdown on hover */
+.dropdown-hover:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}

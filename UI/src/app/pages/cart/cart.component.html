@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="cart-container" *ngIf="cart && cart.items.length > 0; else emptyCart">
+    <h1>Shopping Cart</h1>
+    <div class="cart-items">
+        <div class="cart-item" *ngFor="let item of cart.items">
+            <img [src]="staticURL+item.product.imageURL" alt="Product Image">
+            <div class="item-details">
+                <h4>{{ item.product.name }}</h4>
+                <p>${{ item.product.price }}</p>
+                <div class="quantity">
+                    <button class="qty-btn" (click)="updateQuantity(item, -1)">-</button>
+                    <input type="number" [(ngModel)]="item.quantity" min="1" (change)="onQuantityChange(item)">
+                    <button class="qty-btn" (click)="updateQuantity(item, 1)">+</button>
+                </div>
+            </div>
+            <button class="remove-btn" (click)="removeItem(item, item.product._id)">Remove</button>
+        </div>
+    </div>
+    <div class="cart-summary">
+        <h3>Summary</h3>
+        <p>Total: ${{ calculateTotal() }}</p>
+        <button class="checkout-btn" (click)="checkout()">Checkout</button>
+    </div>
+</div>
+
+<!-- Show a message if the cart is empty -->
+<ng-template #emptyCart>
+    <div class="empty-cart">
+        <h1>Your cart is empty</h1>
+        <p>Add items to your cart to see them here!</p>
+    </div>
+</ng-template>

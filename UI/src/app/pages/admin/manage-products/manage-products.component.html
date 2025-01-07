@@ -1,0 +1,81 @@
+<div class="manage-products-body">
+    <div class="manage-products-page">
+        <header class="page-header">
+            <h1>Manage Products</h1>
+            <a routerLink="/admin/dashboard" class="back-to-dashboard">Back to Dashboard</a>
+        </header>
+        <div class="product-controls">
+            <a routerLink="/admin/add-product" id="addProductButton">Add Product</a>
+        </div>
+        <div class="product-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productList">
+                    <tr *ngFor="let product of products">
+                        <td>{{product._id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.category.name}}</td>
+                        <td>{{product.price | currency}}</td>
+                        <td>{{product.stock}}</td>
+                        <td><img src="{{ImageBaseURL+product.imageURL}}" alt="product Image" class="resized-image"></td>
+                        <td class="action-buttons">
+                            <button class="bi bi-pen edit" (click)="edit(product)" title="Edit">
+                                <i class="material-icons">Edit</i>
+                            </button>
+                            <button class="bi bi-trash delete" (click)="deleteProduct(product._id)" title="Delete">
+                                <i class="material-icons">Delete</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Confirmation Message Modal -->
+    <app-confirmation-modal (onConfirmDeletion)="deleteProductWithConfirmation()"
+        (onCancelDeletion)="cancelDeletion()"></app-confirmation-modal>
+
+    <!-- Add/Edit Product Modal -->
+    <!-- <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add Product</h2>
+            <form id="productForm">
+                <label for="productName">Name:</label>
+                <input type="text" id="productName" required>
+                <label for="productDescription">Description:</label>
+                <textarea id="productDescription" required></textarea>
+                <label for="productCategory">Category:</label>
+                <input type="text" id="productCategory" required>
+                <label for="productPrice">Price:</label>
+                <input type="number" id="productPrice" step="0.01" required>
+                <label for="productStock">Stock:</label>
+                <input type="number" id="productStock" required>
+                <label for="productSizes">Sizes:</label>
+                <div id="productSizes">
+                    <label><input type="checkbox" value="S"> S</label>
+                    <label><input type="checkbox" value="M"> M</label>
+                    <label><input type="checkbox" value="L"> L</label>
+                </div>
+                <label for="productColors">Colors:</label>
+                <input type="text" id="productColors" placeholder="Comma-separated e.g., Red,Blue" required>
+                <label for="productImage">Image URL:</label>
+                <input type="url" id="productImage" required>
+                <label for="isFeatured">Featured:</label>
+                <input type="checkbox" id="isFeatured">
+                <button type="submit" id="saveProductButton">Save</button>
+            </form>
+        </div>
+    </div>
+</div> -->

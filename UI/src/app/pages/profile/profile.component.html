@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="assets/imgs/user.jpg" alt="User Avatar">
+        <h2>{{user.username}}</h2>
+        <p>{{user.email}}</p>
+    </div>
+    <div class="profile-details">
+        <h3>Profile Information</h3>
+        <ul>
+            <li><span>Phone Number:</span> {{user.phoneNumber}}</li>
+            <li><span>Gender:</span> {{user.gender}}</li>
+            <li><span>Address:</span> {{user.address}}</li>
+            <li><span>Member Since:</span> {{user.createDate | date: 'dd/MM/yyyy'}}</li>
+        </ul>
+    </div>
+    <button class="edit-profile-btn" routerLink="/login" (click)="logout()">Log out</button>
+</div>
+<app-footer></app-footer>

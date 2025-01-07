@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="dashboard-body">
+    <div class="admin-dashboard">
+        <header class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+        </header>
+        <div class="dashboard-options">
+            <a routerLink="/admin/manage-products" class="dashboard-option">
+                <span>Manage Products</span>
+            </a>
+            <a routerLink="/" class="dashboard-option">
+                <span>Manage Users</span>
+            </a>
+            <a routerLink='/admin/manage-usertypes' class="dashboard-option">
+                <span>Manage User Types</span>
+            </a>
+            <a routerLink="/login" (click)="logout()" class="dashboard-option">
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+</div>
