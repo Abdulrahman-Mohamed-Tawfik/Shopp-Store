@@ -32,10 +32,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'admin/dashboard', component: DashboardComponent, canActivate: [authGuard] },
-  { path: 'admin/manage-products', component: ManageProductsComponent },
-  { path: 'admin/add-product', component: AddProductComponent },
-  { path: 'admin/manage-usertypes', component: ManageUsertypesComponent },
-  { path: 'admin/add-usertype', component: AddUsertypeComponent },
+  { path: 'admin/manage-products', component: ManageProductsComponent , canActivate: [authGuard] },
+  { path: 'admin/add-product', component: AddProductComponent , canActivate: [authGuard]},
+  { path: 'admin/manage-usertypes', component: ManageUsertypesComponent, canActivate: [authGuard] },
+  { path: 'admin/add-usertype', component: AddUsertypeComponent , canActivate: [authGuard]},
 ];
 
 @NgModule({

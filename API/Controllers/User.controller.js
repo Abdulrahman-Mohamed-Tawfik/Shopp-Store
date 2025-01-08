@@ -6,18 +6,16 @@ import CartModel from '../Models/Cart.model.js';
 
 const createUser = async (req, res) => {
     try {
-        const { name, email, password, phoneNumber, gender, userType: userTypeParam, address } = req.body;
-
-        const existingUser = await UserModel.findOne({ email });
+        req.body.password = await Hashing.hashPassword(req.body.password);
+        const existingUser = await UserModel.findOne({ email: req.body.email });
         if (existingUser) {
             return res.status(401).json({ error: 'Email is already registered' });
         }
 
-        const hashedPassword = await Hashing.hashPassword(password);
 
         let userTypeId;
-        if (userTypeParam) {
-            userTypeId = userTypeParam;
+        if (req.body.userType) {
+            userTypeId = req.body.userType;
         } else {
             const defaultUserType = await UserTypeModel.findOne({ typeName: 'user' });
             if (!defaultUserType) {
@@ -26,20 +24,14 @@ const createUser = async (req, res) => {
             userTypeId = defaultUserType._id;
         }
 
-        const user = await UserModel.create({
-            name,
-            email,
-            password: hashedPassword,
-            phoneNumber,
-            gender,
-            address,
-            userType: userTypeId 
-        });
+        req.body.userType = userTypeId;
+        // console.log("body: ", req.body);
+        const user = await UserModel.create(req.body);
 
         // Create a cart for the user after successful user creation
         const cart = await CartModel.create({
-            user: user._id, 
-            items: [] 
+            user: user._id,
+            items: []
         });
 
         res.status(201).json({ message: 'User and cart created successfully', user, cart });

@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
       },
       error: (err) => {
         // Display the error message to the user
-        alert(err.message); // Use an alert, Snackbar, or display it on the form
+        alert(err.message);
       }
     });
   }
