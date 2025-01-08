@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _authS: AuthService) { }
   cartURL = "http://localhost:7000/cart";
   cartUserURL = "http://localhost:7000/cart/user";
   addToCartURL = "http://localhost:7000/cart/add";
@@ -15,11 +16,13 @@ export class CartService {
   staticfilesURL = 'http://localhost:7000/images/'
 
   getCarts(): Observable<any> {
-    return this.http.get<any>(this.cartURL);
+    const headers = this._authS.getHeaders();
+    return this.http.get<any>(this.cartURL, { headers });// SEND HEADERS WITH GET REQUEST 
   }
 
   getCartById(id: object): Observable<any> {
-    return this.http.get<any>(`${this.cartURL}/${id}`);
+    const headers = this._authS.getHeaders();
+    return this.http.get<any>(`${this.cartURL}/${id}`, { headers });// SEND HEADERS WITH GET REQUEST 
   }
 
   getCartByUserId(userId: string): Observable<any> {
@@ -27,15 +30,15 @@ export class CartService {
   }
 
   addProductToCart(userId: string, productId: string, quantity: number = 1): Observable<any> {
-    const body = { userId, productId, quantity }; // Prepare request body
+    const body = { userId, productId, quantity };
 
-    return this.http.post<any>(this.addToCartURL, body); // Send POST request to add product to cart
+    return this.http.post<any>(this.addToCartURL, body);
   }
 
   deleteProductFromCart(userId: string, productId: string): Observable<any> {
-    const body = { userId, productId };  // Prepare the request body with userId and productId
-    return this.http.post<any>(`${this.deleteFromCartURL}`, body);  // Send POST request with the body
+    const body = { userId, productId };
+    return this.http.post<any>(`${this.deleteFromCartURL}`, body);
   }
-  
+
 
 }

@@ -1,5 +1,6 @@
 import CartModel from "../Models/Cart.model.js";
 import ProductModel from '../Models/Product.model.js';
+import UserTypeModel from "../Models/UserType.model.js";
 
 const createCart = async (req, res) => {
     try {
@@ -12,6 +13,19 @@ const createCart = async (req, res) => {
 
 const getAllCarts = async (req, res) => {
     try {
+        // check if user exists [AUTHENTICATION]
+        if (!req.user) {
+            return res.status(401).json({ error: "User not authenticated" });
+        }
+
+        // Check if the user's role/type is admin [AUTHORIZATION]
+        const userTypeId = req.user.userTypeId;
+        const userTypeObj = await UserTypeModel.findById(userTypeId);
+
+        if (userTypeObj.typeName !== 'admin') {
+            return res.status(403).json({ error: "Access denied. Only admins can perform this action" });
+        }
+
         const Carts = await CartModel.find()
             .populate('user')
             .populate('items.product');

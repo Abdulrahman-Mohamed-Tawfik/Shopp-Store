@@ -1,9 +1,22 @@
 import ProductModel from "../Models/Product.model.js";
 import fs from "fs";
 import path from "path";
+import UserTypeModel from "../Models/UserType.model.js";
 
 const createProduct = async (req, res) => {
     try {
+        // check if user exists [AUTHENTICATION]
+        if (!req.user) {
+            return res.status(401).json({ error: "User not authenticated" });
+        }
+
+        // Check if the user's role/type is admin [AUTHORIZATION]
+        const userType = await UserTypeModel.findById(req.user.userTypeId);
+        if (userType.typeName !== 'admin') {
+            return res.status(403).json({ error: "Access denied. Only admins can perform this action" });
+        }
+        
+
         req.body.imageURL = req.file.filename;
         const product = await ProductModel.create(req.body);
         res.status(201).json(product);

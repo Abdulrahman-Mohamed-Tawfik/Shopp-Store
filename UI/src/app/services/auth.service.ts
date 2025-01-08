@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
@@ -12,6 +12,12 @@ export class AuthService {
 
   LoginURL = "http://localhost:7000/user/login";
   SignupURL = "http://localhost:7000/user";
+
+  public getHeaders(): HttpHeaders {
+    let token = this.getToken();
+    return new HttpHeaders({ 'Authorization': 'Bearer ' + token })
+  }
+
 
   signupUser(name: string, email: string, password: string, phoneNumber: string, gender: string, address: string): Observable<any> {
     return this.http.post<any>(this.SignupURL, { name, email, password, phoneNumber, gender, address }).pipe(
@@ -47,7 +53,7 @@ export class AuthService {
   getAccessToken(): Observable<string | null> {
     return this.tokenSubject.asObservable();
   }
-  getToken():any{
+  getToken(): any {
     return this.tokenSubject;
   }
 

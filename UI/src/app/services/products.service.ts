@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _authS: AuthService) { }
   productURL = "http://localhost:7000/product";
   staticfilesURL = 'http://localhost:7000/images/'
 
@@ -15,7 +16,7 @@ export class ProductsService {
     return this.http.get<any>(this.productURL);
   }
   getProductById(id: object): Observable<any> {
-    return this.http.get<any>(`${this.productURL}/${id}`); // Assuming your API endpoint is '/product/:id'
+    return this.http.get<any>(`${this.productURL}/${id}`);
   }
 
   getProductsByCategory(categoryId: string): Observable<any[]> {
@@ -26,9 +27,9 @@ export class ProductsService {
     return this.http.get<any[]>(this.productURL).pipe(
       map((products) =>
         products
-          .filter((product) => product.isFeatured) // Filter featured products
-          .map((product) => product.imageURL) // Extract images
-          .flat() // Flatten in case of multiple images per product
+          .filter((product) => product.isFeatured) 
+          .map((product) => product.imageURL) 
+          .flat() 
       )
     );
   }
@@ -46,8 +47,9 @@ export class ProductsService {
     if (file) {
       formData.append('productImage', file);
     }
+    const headers = this._authS.getHeaders();
 
-    return this.http.post<any>(this.productURL, formData);
+    return this.http.post<any>(this.productURL, formData, { headers });// SEND HEADERS WITH POST REQUEST 
   }
 
   deleteProduct(productId: any): Observable<any> {

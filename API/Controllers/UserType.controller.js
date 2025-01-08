@@ -2,12 +2,12 @@ import UserTypeModel from "../Models/UserType.model.js";
 
 const createUserType = async (req, res) => {
     try {
-
+        // check if user exists [AUTHENTICATION]
         if (!req.user) {
             return res.status(401).json({ error: "User not authenticated" });
         }
-        
-        // Check if the user's role/type is admin
+
+        // Check if the user's role/type is admin [AUTHORIZATION]
         const userTypeId = req.user.userTypeId;
         const userTypeObj = await UserTypeModel.findById(userTypeId);
 
@@ -55,9 +55,13 @@ const deleteUserTypeById = async (req, res) => {
         const userType = await UserTypeModel.findById(req.params.id);
 
         console.log(userType);
-        
+
         if (!userType) {
             return res.status(404).json({ message: "user type not found" });
+        }
+
+        if (userType.typeName !== 'admin') {
+            return res.status(403).json({ error: "Access denied. Only admins can perform this action" });
         }
 
         await UserTypeModel.findByIdAndDelete(req.params.id);
