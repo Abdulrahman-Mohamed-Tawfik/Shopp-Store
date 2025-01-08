@@ -30,14 +30,16 @@ export class CartService {
   }
 
   addProductToCart(userId: string, productId: string, quantity: number = 1): Observable<any> {
+    const headers = this._authS.getHeaders();
     const body = { userId, productId, quantity };
-
-    return this.http.post<any>(this.addToCartURL, body);
+    return this.http.post<any>(this.addToCartURL, body, { headers });
   }
 
   deleteProductFromCart(userId: string, productId: string): Observable<any> {
+    const headers = this._authS.getHeaders();
+
     const body = { userId, productId };
-    return this.http.post<any>(`${this.deleteFromCartURL}`, body);
+    return this.http.post<any>(this.deleteFromCartURL, body, { headers });
   }
 
 

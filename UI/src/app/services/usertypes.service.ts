@@ -15,6 +15,7 @@ export class UsertypesService {
 
   getUserTypes(): Observable<any> {
     const headers = this._authS.getHeaders();
+    console.log("headerssssss: ",headers);
 
     return this.http.get<any>(this.usertypeURL, { headers });
   }
@@ -32,6 +33,8 @@ export class UsertypesService {
 
   deleteUserType(userTypeId: any): Observable<any> {
     const headers = this._authS.getHeaders();
+    // console.log("headerssssss: ",headers);
+    
     return this.http.delete<any>(`${this.usertypeURL}/${userTypeId}`, { headers });
   }
 }

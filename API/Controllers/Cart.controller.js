@@ -66,6 +66,11 @@ const getCartByUserId = async (req, res) => {
 
 
 const addProductToCart = async (req, res) => {
+    // check if user exists [AUTHENTICATION]
+    if (!req.user) {
+        return res.status(401).json({ error: "User not authenticated" });
+    }
+
     const { userId, productId, quantity = 1 } = req.body;
 
     try {
@@ -108,6 +113,12 @@ const addProductToCart = async (req, res) => {
 
 const deleteProductFromCart = async (req, res) => {
     try {
+        console.log("user del:",req.user);
+        
+        // check if user exists [AUTHENTICATION]
+        if (!req.user) {
+            return res.status(401).json({ error: "User not authenticated" });
+        }
         const { userId, productId } = req.body;  // Take userId and productId from the request body
 
         // Find the user's cart

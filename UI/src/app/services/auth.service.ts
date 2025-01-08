@@ -14,7 +14,8 @@ export class AuthService {
   SignupURL = "http://localhost:7000/user";
 
   public getHeaders(): HttpHeaders {
-    let token = this.getToken();
+    let token = '';
+    this.getAccessToken().subscribe(data => { if (data) { token = data } });
     return new HttpHeaders({ 'Authorization': 'Bearer ' + token })
   }
 
